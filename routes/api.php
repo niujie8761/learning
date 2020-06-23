@@ -13,6 +13,12 @@
 */
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
-  //  return $request->user();
+//    return $request->user();
 //});
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function($api) {
+    $api->group(['namespace' => 'App\Http\Controllers'], function($api) {
+        $api->get('/user/info', 'UserController@info');
+    });
+});
 
