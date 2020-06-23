@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/login', function() {
-    dd(12345);
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
