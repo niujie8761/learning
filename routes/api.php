@@ -20,5 +20,6 @@ $api->version('v1', function($api) {
     $api->group(['namespace' => 'App\Http\Controllers'], function($api) {
         $api->get('/user/info', 'UserController@info');
     });
+    $api->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
 
