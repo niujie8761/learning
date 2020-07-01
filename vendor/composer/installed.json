@@ -69,6 +69,78 @@
         ]
     },
     {
+        "name": "caffeinated/modules",
+        "version": "v5.1.1",
+        "version_normalized": "5.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/caffeinated/modules.git",
+            "reference": "b2cad90ca8a5e89bf40f230535bcaef491aa6038"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/caffeinated/modules/zipball/b2cad90ca8a5e89bf40f230535bcaef491aa6038",
+            "reference": "b2cad90ca8a5e89bf40f230535bcaef491aa6038",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "illuminate/support": "5.8.*",
+            "php": "^7.1.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.0",
+            "orchestra/testbench": "^3.8",
+            "phpunit/phpunit": "~7.0",
+            "spatie/phpunit-snapshot-assertions": "^2.0"
+        },
+        "suggest": {
+            "wikimedia/composer-merge-plugin": "Allows the ability to create and merge composer.json files for your individual modules for module-specific dependency management."
+        },
+        "time": "2019-07-10T16:52:04+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Caffeinated\\Modules\\ModulesServiceProvider"
+                ],
+                "aliases": {
+                    "Module": "Caffeinated\\Modules\\Facades\\Module"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/Support/helpers.php"
+            ],
+            "psr-4": {
+                "Caffeinated\\Modules\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Shea Lewis",
+                "email": "shea.lewis89@gmail.com"
+            }
+        ],
+        "description": "Laravel 5.x Modules",
+        "keywords": [
+            "caffeinated",
+            "laravel",
+            "modules"
+        ]
+    },
+    {
         "name": "dingo/api",
         "version": "v2.4.7",
         "version_normalized": "2.4.7.0",
