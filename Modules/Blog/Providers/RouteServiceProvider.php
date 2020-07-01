@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Modules\Blog\Http\Controllers';
+    protected $namespace = 'Modules\Blog\Controllers\Http';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -35,11 +35,30 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapWebRoutes();
+        $api = app('Dingo\Api\Routing\Router');
 
-        $this->mapApiRoutes();
+        $this->mapWebRoutes($api);
 
+        $this->mapApiRoutes($api);
+
+        $this->mapHttpRoutes($api);
         //
+    }
+
+    /**
+     * Brief:
+     *
+     * @param $api
+     */
+    protected function mapHttpRoutes($api)
+    {
+        $api->version('v1', function($api) {
+            $api->group([
+                'namespace'  => $this->namespace,
+            ], function($api) {
+                require module_path('blog', 'Routes/Http/route.php', 'app');
+            });
+        });
     }
 
     /**
@@ -47,15 +66,19 @@ class RouteServiceProvider extends ServiceProvider
      *
      * These routes all receive session state, CSRF protection, etc.
      *
+     * @params $api
+     *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapWebRoutes($api)
     {
-        Route::group([
-            'middleware' => 'web',
-            'namespace'  => $this->namespace,
-        ], function ($router) {
-            require module_path('blog', 'Routes/web.php', 'app');
+        $api->version('v1', function($api) {
+            $api->group([
+                'middleware' => 'web',
+                'namespace'  => $this->namespace,
+            ], function ($api) {
+                require module_path('blog', 'Routes/web.php', 'app');
+            });
         });
     }
 
@@ -64,16 +87,20 @@ class RouteServiceProvider extends ServiceProvider
      *
      * These routes are typically stateless.
      *
+     * @param $api
+     *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function mapApiRoutes($api)
     {
-        Route::group([
-            'middleware' => 'auth:api',
-            'namespace'  => $this->namespace,
-            'prefix'     => 'api',
-        ], function ($router) {
-            require module_path('blog', 'Routes/api.php', 'app');
+        $api->version('v1', function($api) {
+            $api->group([
+                'middleware' => 'auth:api',
+                'namespace'  => $this->namespace,
+                'prefix'     => 'api',
+            ], function ($api) {
+                require module_path('blog', 'Routes/api.php', 'app');
+            });
         });
     }
 }

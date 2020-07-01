@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +12,10 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('/blog', function (Request $request) {
+//Route::get('/blog', function (Request $request) {
     // return $request->blog();
-})->middleware('auth:api');
+//})->middleware('auth:api');
+$api = app('Dingo\Api\Routing\Router');
+$api->version('v1', function($api) {
+
+});
