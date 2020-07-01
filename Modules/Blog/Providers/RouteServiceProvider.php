@@ -35,10 +35,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $api = app('Dingo\Api\Routing\Router');
-        $this->mapWebRoutes($api);
+        $this->mapWebRoutes();
 
-        $this->mapApiRoutes($api);
+        $this->mapApiRoutes();
 
         //
     }
@@ -50,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes($api)
+    protected function mapWebRoutes()
     {
         Route::group([
             'middleware' => 'web',
@@ -67,24 +66,14 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes($api)
+    protected function mapApiRoutes()
     {
-        $api->version('v1', function ($api) {
-            $api->group([
-                'namespace' => $this->namespace,
-            ], function ($api) {
-                $routerPath = module_path('blog', 'Routes/api.php', 'app');
-                if (file_exists($routerPath)) {
-                    require $routerPath;
-                }
-            });
+        Route::group([
+            'middleware' => 'auth:api',
+            'namespace'  => $this->namespace,
+            'prefix'     => 'api',
+        ], function ($router) {
+            require module_path('blog', 'Routes/api.php', 'app');
         });
-       // Route::group([
-       //     'middleware' => 'auth:api',
-       //     'namespace'  => $this->namespace,
-       //     'prefix'     => 'api',
-       // ], function ($router) {
-       //     require module_path('blog', 'Routes/api.php', 'app');
-       // });
     }
 }
