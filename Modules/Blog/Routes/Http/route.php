@@ -5,3 +5,9 @@ $api->group(['middleware' => 'slidingGrant'], function($api) {
         require $item;
     }
 });
+
+$api->group(['middleware' => 'auth.token.jwt:api'], function($api) {
+    foreach(glob(__DIR__.'/Verify/*.php') as $item) {
+        require $item;
+    }
+});

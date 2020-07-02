@@ -7,7 +7,7 @@ class UserController
 {
     public function info()
     {
-        return 999;
+        return 666;
     }
 
     public function login(Request $request)
