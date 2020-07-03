@@ -1,0 +1,73 @@
+<?php
+namespace App\Admin\ControllersNAMESPACE;
+
+use App\Http\Controllers\ApiController;
+
+class DummyController extends ApiController
+{
+    public function __construct()
+    {
+
+    }
+
+   /**
+    * 列表
+    *
+    * @method GET
+    * @time #date
+    * @return mixed
+    */
+    public function index()
+    {
+
+    }
+
+   /**
+    * 存储
+    *
+    * @method POST
+    * @time #date
+    * @param CreateRequest $request
+    * @return mixed
+    */
+    public function store(CreateRequest $request)
+    {
+    }
+
+   /**
+    * 获取
+    *
+    * @method GET
+    * @time #date
+    * @param $id
+    * @return mixed
+    */
+    public function show($id)
+    {
+    }
+
+   /**
+    * 更新
+    *
+    * @method PUT
+    * @time #date
+    * @param $id
+    * @param UpdateRequest $request
+    * @return mixed
+    */
+    public function update($id, UpdateRequest $request)
+    {
+    }
+
+   /**
+    * 删除
+    *
+    * @method DELETE
+    * @time #date
+    * @param $id
+    * @return mixed
+    */
+    public function destroy($id)
+    {
+    }
+}

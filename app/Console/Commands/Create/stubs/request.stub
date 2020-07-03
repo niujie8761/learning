@@ -1,0 +1,33 @@
+<?php
+namespace App\Admin\Requests\AdminUser\AdminUser;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class DummyRequest extends FormRequest
+{
+    /**
+     * 判断请求用户是否经过认证
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            //
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            //
+        ];
+    }
+}
