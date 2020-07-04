@@ -24,8 +24,6 @@ trait StubFileCreatorTrait
      * 获取路径和文件名
      *
      * @httpMethod
-     * @time 2019年03月23日
-     * @email wuyanwen@baijiayun.com
      * @param $arg
      * @return array
      */
@@ -46,8 +44,6 @@ trait StubFileCreatorTrait
      * 创建文件路径
      *
      * @httpMethod
-     * @time 2019年03月23日
-     * @email wuyanwen@baijiayun.com
      */
     protected function createDir()
     {
@@ -60,8 +56,6 @@ trait StubFileCreatorTrait
      * 文件是否存在
      *
      * @httpMethod
-     * @time 2019年03月23日
-     * @email wuyanwen@baijiayun.com
      * @return bool
      */
     public function isFileExisted()
@@ -77,8 +71,6 @@ trait StubFileCreatorTrait
      *
      *
      * @httpMethod
-     * @time 2019年03月23日
-     * @email wuyanwen@baijiayun.com
      */
     public function createFile()
     {
@@ -89,8 +81,6 @@ trait StubFileCreatorTrait
     /**
      * 检测名文件是否符合
      *
-     * @time 2019年03月19日
-     * @email wuyanwen@baijiayun.com
      * @param $filename
      * @return false|int
      */
@@ -104,8 +94,6 @@ trait StubFileCreatorTrait
      * 创建
      *
      * @httpMethod
-     * @time 2019年03月23日
-     * @email wuyanwen@baijiayun.com
      */
     public function create()
     {
@@ -125,8 +113,6 @@ trait StubFileCreatorTrait
      * 替换
      *
      * @httpMethod
-     * @time 2019年03月23日
-     * @email wuyanwen@baijiayun.com
      * @param $search
      * @param $replace
      * @param $content
@@ -141,8 +127,6 @@ trait StubFileCreatorTrait
      * 替换 NAMESPACE
      *
      * @httpMethod
-     * @time 2019年03月23日
-     * @email wuyanwen@baijiayun.com
      * @param $namespace
      * @param $content
      * @return string

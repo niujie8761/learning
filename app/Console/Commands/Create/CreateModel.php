@@ -14,7 +14,7 @@ class CreateModel extends Command
      *
      * @var string
      */
-    protected $signature = 'create:model 
+    protected $signature = 'create:model
                             {model : model name}
                             {--table= : If Set Table Name Will Not Use Model And Use This Option}
                             {--hasField=no : is need generate field default no }';
@@ -45,7 +45,7 @@ class CreateModel extends Command
 
         list($dir, $model, $namespace) = $this->getDirAndFileName($model);
 
-        $this->path = app_path('Models') . DIRECTORY_SEPARATOR . ($dir ? : '');
+        $this->path = app_path('Model') . DIRECTORY_SEPARATOR . ($dir ? : '');
 
         $this->file = $this->path . DIRECTORY_SEPARATOR .ucfirst($model) . '.php';
 
@@ -57,8 +57,6 @@ class CreateModel extends Command
     /**
      * 创建模型内容
      *
-     * @time 2019年03月19日
-     * @email wuyanwen@baijiayun.com
      * @param $modelName
      * @param $hasField
      * @param $namespace
@@ -89,8 +87,6 @@ class CreateModel extends Command
     /**
      * 创建模型字段
      *
-     * @time 2019年03月19日
-     * @email wuyanwen@baijiayun.com
      * @param $modelContents
      * @param $modelName
      * @return string
@@ -109,8 +105,6 @@ class CreateModel extends Command
     /**
      * 填充数据
      *
-     * @time 2019年03月19日
-     * @email wuyanwen@baijiayun.com
      * @param $modelName
      * @return string
      */
@@ -132,8 +126,6 @@ class CreateModel extends Command
     /**
      * 字符注释
      *
-     * @time 2019年03月19日
-     * @email wuyanwen@baijiayun.com
      * @param $comment
      * @param $type
      * @return string
@@ -146,8 +138,6 @@ class CreateModel extends Command
     /**
      * 驼峰分割
      *
-     * @time 2019年03月19日
-     * @email wuyanwen@baijiayun.com
      * @param string $string
      * @param string $separator
      * @return string
@@ -160,8 +150,6 @@ class CreateModel extends Command
     /**
      * 组合字符
      *
-     * @time 2019年03月19日
-     * @email wuyanwen@baijiayun.com
      * @param string $string
      * @return string
      */
