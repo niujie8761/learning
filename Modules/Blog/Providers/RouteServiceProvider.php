@@ -16,6 +16,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'Modules\Blog\Controllers\Http';
 
+    protected $adminNamespace = 'Modules\Blog\Controllers\Admin';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -42,11 +44,13 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes($api);
 
         $this->mapHttpRoutes($api);
+
+        $this->mapAdminRoutes($api);
         //
     }
 
     /**
-     * Brief:
+     * Brief:http
      *
      * @param $api
      */
@@ -58,6 +62,22 @@ class RouteServiceProvider extends ServiceProvider
             ], function($api) {
                 require module_path('blog', 'Routes/Http/route.php', 'app');
             });
+        });
+    }
+
+    /**
+     * Brief:admin
+     *
+     * @param $api
+     */
+    protected function mapAdminRoutes($api)
+    {
+        $api->version('v1', function($api) {
+           $api->group([
+               'namespace' => $this->adminNamespace,
+               ], function($api) {
+                    require module_path('blog', 'Routes/Admin/route.php', 'app');
+           });
         });
     }
 
