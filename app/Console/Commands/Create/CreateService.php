@@ -49,7 +49,7 @@ class CreateService extends Command
 
         $this->content = $this->replaceNameSpace( $namespace, $this->replace('Dump', $name, $this->content));
 
-        $this->path = app_path('Service') .DIRECTORY_SEPARATOR . ($dir ? : '') . DIRECTORY_SEPARATOR;
+        $this->path = app_path('Service') .DIRECTORY_SEPARATOR . ($dir ? : '') . ($dir ? DIRECTORY_SEPARATOR : '');
 
         $this->file = sprintf('%sService.php', $this->path . $name);
 

@@ -47,7 +47,7 @@ class CreateModel extends Command
 
         $this->path = app_path('Model') . DIRECTORY_SEPARATOR . ($dir ? : '');
 
-        $this->file = $this->path . DIRECTORY_SEPARATOR .ucfirst($model) . '.php';
+        $this->file = $this->path . ($dir ? DIRECTORY_SEPARATOR : '') . ucfirst($model) . '.php';
 
         $this->content = $this->makeModel($model, $hasField, $namespace);
 
@@ -65,8 +65,8 @@ class CreateModel extends Command
     private function makeModel($modelName, $hasField, $namespace)
     {
         $modelContents = "<?php \r\n \r\n";
-        $modelContents .= "namespace App\ModelsNAMESPACE;\r\n \r\n";
-        $modelContents .= "use App\Models\BaseModel;\r\n \r\n";
+        $modelContents .= "namespace App\ModelNAMESPACE;\r\n \r\n";
+        $modelContents .= "use App\Model\BaseModel;\r\n \r\n";
         $modelContents .= 'class $model extends BaseModel';
         $modelContents .= "\r\n{ \r\n \t";
         $modelContents .= 'protected $table = \'' . 'TABLE\';';
@@ -114,9 +114,6 @@ class CreateModel extends Command
 
         $arr = "[ \r\n";
         foreach ($info as $value) {
-           // if ($value->Comment) {
-             //   $arr .= sprintf("\t\t // %s \r\n", $value->Comment);
-           // }
             $arr .= sprintf("\t\t '%s', %s \r\n" , $value->Field, $value->Comment ? '// ' . $value->Comment : '');
         }
         $arr = rtrim(trim($arr), ',');
