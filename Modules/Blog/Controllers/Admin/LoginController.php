@@ -2,6 +2,7 @@
 namespace Modules\Blog\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Modules\Blog\Controllers\BaseController;
 
 /**
@@ -24,7 +25,7 @@ class LoginController extends BaseController
         if(!$token = auth('admin')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
+        recordLog(print_r($credentials, true), 'logs/login/info.log');
         return $this->respondWithToken($token);
     }
 }
