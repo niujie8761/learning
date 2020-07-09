@@ -65,16 +65,15 @@ $xhprof_data = xhprof_disable();
 // display raw xhprof data for the profiler run
 //print_r($xhprof_data);
 
+$xhprofRoot =  public_path('xhprof');
 
-
-$XHPROF_ROOT = realpath(dirname(__FILE__) .'/../public/xhprof');
-include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
-include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
+include_once $xhprofRoot . "/xhprof_lib/utils/xhprof_lib.php";
+include_once $xhprofRoot . "/xhprof_lib/utils/xhprof_runs.php";
 
 // save raw data for this profiler run using default
 // implementation of iXHProfRuns.
-$xhprof_runs = new XHProfRuns_Default();
+$xhprofRun = new XHProfRuns_Default();
 
 // save the run under a namespace "xhprof_foo"
-$run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_foo");
+$run_id = $xhprofRun->save_run($xhprof_data, "xhprof_foo");
 
