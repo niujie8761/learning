@@ -6,7 +6,10 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-xhprof_enable();
+$xhprofOn = substr_count($_SERVER['QUERY_STRING'], 'xhprof_on');
+if ($xhprofOn) {
+    xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+}
 define('LARAVEL_START', microtime(true));
 
 /*
@@ -59,21 +62,24 @@ $response->send();
 
 $kernel->terminate($request, $response);
 
+//开启xhprof
+if($xhprofOn) {
 // stop profiler
-$xhprof_data = xhprof_disable();
+    $xhprofData = xhprof_disable();
 
 // display raw xhprof data for the profiler run
-//print_r($xhprof_data);
+    //print_r($xhprofData);
 
-$xhprofRoot =  public_path('xhprof');
+    $xhprofRoot = public_path('xhprof');
 
-include_once $xhprofRoot . "/xhprof_lib/utils/xhprof_lib.php";
-include_once $xhprofRoot . "/xhprof_lib/utils/xhprof_runs.php";
+    include_once $xhprofRoot."/xhprof_lib/utils/xhprof_lib.php";
+    include_once $xhprofRoot."/xhprof_lib/utils/xhprof_runs.php";
 
 // save raw data for this profiler run using default
 // implementation of iXHProfRuns.
-$xhprofRun = new XHProfRuns_Default();
+    $xhprofRun = new XHProfRuns_Default();
 
 // save the run under a namespace "xhprof_foo"
-$run_id = $xhprofRun->save_run($xhprof_data, "xhprof_foo");
+    $run_id = $xhprofRun->save_run($xhprof_data, "xhprof_foo");
+}
 
