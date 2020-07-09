@@ -80,6 +80,6 @@ if($xhprofOn) {
     $xhprofRun = new XHProfRuns_Default();
 
 // save the run under a namespace "xhprof_foo"
-    $run_id = $xhprofRun->save_run($xhprof_data, "xhprof_foo");
+    $run_id = $xhprofRun->save_run($xhprofData, "xhprof_foo");
 }
 
