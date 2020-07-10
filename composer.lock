@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c92470f5eb60372a5386f15aa05fdbb5",
+    "content-hash": "4e65fb14ad4b164399e8409948042a51",
     "packages": [
         {
             "name": "caffeinated/modules",
@@ -4833,6 +4833,56 @@
                 "instantiate"
             ],
             "time": "2020-05-29T17:27:14+00:00"
+        },
+        {
+            "name": "eleven26/listen-sql",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eleven26/listen-sql.git",
+                "reference": "47e1c4a6e452d8f71a78d4fced586eec8118575d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eleven26/listen-sql/zipball/47e1c4a6e452d8f71a78d4fced586eec8118575d",
+                "reference": "47e1c4a6e452d8f71a78d4fced586eec8118575d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-sockets": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Eleven26\\ListenSql\\ListenSqlServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eleven26\\ListenSql\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "eleven26",
+                    "email": "rubymay21s@gmail.com"
+                }
+            ],
+            "description": "Sql dump tool for laravel/lumen",
+            "homepage": "https://github.com/eleven26/listen-sql",
+            "time": "2020-04-03T05:55:26+00:00"
         },
         {
             "name": "filp/whoops",

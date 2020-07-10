@@ -139,6 +139,7 @@ class ComposerStaticInit03090d623f96655c6525a8abcb7ec602
         ),
         'E' => 
         array (
+            'Eleven26\\ListenSql\\' => 19,
             'Egulias\\EmailValidator\\' => 23,
         ),
         'D' => 
@@ -411,6 +412,10 @@ class ComposerStaticInit03090d623f96655c6525a8abcb7ec602
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
+        ),
+        'Eleven26\\ListenSql\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/eleven26/listen-sql/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -932,6 +937,10 @@ class ComposerStaticInit03090d623f96655c6525a8abcb7ec602
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Warning.php',
+        'Eleven26\\ListenSql\\Client' => __DIR__ . '/..' . '/eleven26/listen-sql/src/Client.php',
+        'Eleven26\\ListenSql\\Commands\\Server' => __DIR__ . '/..' . '/eleven26/listen-sql/src/Commands/Server.php',
+        'Eleven26\\ListenSql\\ConfigCache' => __DIR__ . '/..' . '/eleven26/listen-sql/src/ConfigCache.php',
+        'Eleven26\\ListenSql\\ListenSqlServiceProvider' => __DIR__ . '/..' . '/eleven26/listen-sql/src/ListenSqlServiceProvider.php',
         'Faker\\Calculator\\Ean' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Ean.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Inn.php',

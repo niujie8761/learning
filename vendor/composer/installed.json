@@ -761,6 +761,58 @@
         ]
     },
     {
+        "name": "eleven26/listen-sql",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/eleven26/listen-sql.git",
+            "reference": "47e1c4a6e452d8f71a78d4fced586eec8118575d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/eleven26/listen-sql/zipball/47e1c4a6e452d8f71a78d4fced586eec8118575d",
+            "reference": "47e1c4a6e452d8f71a78d4fced586eec8118575d",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "ext-sockets": "*"
+        },
+        "time": "2020-04-03T05:55:26+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Eleven26\\ListenSql\\ListenSqlServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Eleven26\\ListenSql\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "eleven26",
+                "email": "rubymay21s@gmail.com"
+            }
+        ],
+        "description": "Sql dump tool for laravel/lumen",
+        "homepage": "https://github.com/eleven26/listen-sql"
+    },
+    {
         "name": "erusev/parsedown",
         "version": "1.7.4",
         "version_normalized": "1.7.4.0",
