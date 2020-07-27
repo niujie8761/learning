@@ -3,6 +3,7 @@ namespace Modules\Blog\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
 use Modules\Blog\Controllers\BaseController;
 
 /**
@@ -20,6 +21,9 @@ class LoginController extends BaseController
      */
     public function login(Request $request)
     {
+        $res = Redis::set('test12', 123);
+        dd($res);
+        exit;
         $credentials = $request->only(['mobile', 'password']);
 
         if(!$token = auth('admin')->attempt($credentials)) {
