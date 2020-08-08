@@ -12,14 +12,18 @@ class Async implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected $roomId;
+
     /**
      * Create a new job instance.
      *
+     * @param $roomId
      * @return void
      */
-    public function __construct()
+    public function __construct($roomId)
     {
         //
+        $this->roomId = $roomId;
     }
 
     /**
@@ -30,5 +34,15 @@ class Async implements ShouldQueue
     public function handle()
     {
         //
+        recordLog($this->roomId->roomId, 'logs/job/handle.log');
+    }
+
+    /**
+     * Brief:
+     * @param \Exception $exception
+     */
+    public function failed(\Exception $exception)
+    {
+        recordLog($exception->getMessage(), 'logs/job/failed.log');
     }
 }

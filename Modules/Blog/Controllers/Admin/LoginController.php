@@ -38,7 +38,7 @@ class LoginController extends BaseController
      */
     public function job()
     {
-        $job = new Async();
+        $job = new Async(100);
 
         $res = Async::dispatch($job)->onQueue('async');
         dd($res);
