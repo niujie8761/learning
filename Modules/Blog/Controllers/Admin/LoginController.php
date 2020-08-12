@@ -2,6 +2,7 @@
 namespace Modules\Blog\Controllers\Admin;
 
 use App\Jobs\Async;
+use Illuminate\Bus\Dispatcher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
@@ -38,9 +39,10 @@ class LoginController extends BaseController
      */
     public function job()
     {
-        $job = new Async(100);
+        $job = (new Async(100))->onQueue('async');
 
-        $res = Async::dispatch($job)->onQueue('async');
+        $res = app(Dispatcher::class)->dispatch($job);
+
         dd($res);
     }
 }

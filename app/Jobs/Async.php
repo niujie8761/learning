@@ -34,7 +34,7 @@ class Async implements ShouldQueue
     public function handle()
     {
         //
-        recordLog($this->roomId->roomId, 'logs/job/handle.log');
+        recordLog($this->roomId, 'logs/job/handle.log');
     }
 
     /**

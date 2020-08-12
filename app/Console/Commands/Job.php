@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\Async;
+use Illuminate\Bus\Dispatcher;
 use Illuminate\Console\Command;
 
 class Job extends Command
@@ -39,9 +40,9 @@ class Job extends Command
     public function handle()
     {
         //
-        $job = new Async(100);
+        $job = (new Async(100))->onQueue('async');
 
-        $res = Async::dispatch($job)->onQueue('async');
+        $res = app(Dispatcher::class)->dispatch($job);
 
         recordLog('111', 'logs/job/command.log');
     }
