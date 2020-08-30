@@ -92,9 +92,32 @@ class OrderService
     //出队列
     public function consume()
     {
-        $callback = function($msg) {
-            echo '接收到消息：',$msg->delivery_info['routing_key'], ':', $msg->body, PHP_EOL;
-            sleep(1);
+        $callback = function($message) {
+            echo '接收到消息：',$message->delivery_info['routing_key'], ':', $message->body, PHP_EOL;
+
+            $obj = json_decode($message->body);
+
+            try {
+
+                $order = OrderInfo::query()->where('id', $obj->id)->first();
+                if (strtotime($order->created_at) + $this->delaySecond > time()){
+                    throw new \Exception('取消订单时间未到', 404);
+                }
+
+                //更改数据库状态
+                $order->status = 10;
+                $order->colsed_at = date('Y-m-d H:i:s');
+                $res = $order->save();
+
+                if (!$res){
+                    throw new \Exception('取消订单失败', 404);
+                }
+
+            } catch (\Exception $e) {
+                //记录日志
+            }
+            //确认消息处理完成
+            $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
         };
 
         $this->channel->basic_consume($this->queueName, '', false, false, false, false,
@@ -103,32 +126,5 @@ class OrderService
         while($this->channel->is_consuming()) {
             $this->channel->wait();
         }
-    }
-
-    //开始消费
-    function process_message($message)
-    {
-        $obj = json_decode($message->body);
-        try {
-
-            $order = OrderInfo::query()->where('id', $obj->id)->first();
-            if (strtotime($order->created_at) + $this->delaySecond > time()){
-                throw new \Exception('取消订单时间未到', 404);
-            }
-
-            //更改数据库状态
-            $order->status = 10;
-            $order->colsed_at = date('Y-m-d H:i:s');
-            $res = $order->save();
-
-            if (!$res){
-                throw new \Exception('取消订单失败', 404);
-            }
-
-        } catch (\Exception $e) {
-            //记录日志
-        }
-        //确认消息处理完成
-        $message->delivery_info['channel']->basic_ack($message->delivery_info['delivery_tag']);
     }
 }
