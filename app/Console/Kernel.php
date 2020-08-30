@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\CreateLogicCommand;
 use App\Console\Commands\Job;
+use App\Console\Commands\OrderNopay;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         CreateLogicCommand::class,
         Job::class,
+        OrderNopay::class,
     ];
 
     /**
