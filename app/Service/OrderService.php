@@ -82,7 +82,7 @@ class OrderService
 
         //创建消息
         $msg = new AMQPMessage($message, [
-            'delivery_mode' => AMQPMessage::DELIVERY_MODE_NON_PERSISTENT
+            'delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT
         ]);
 
         //推送到队列                   //消息  //交换机名称          // 路由 推送到延迟队列中
