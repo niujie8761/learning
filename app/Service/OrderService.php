@@ -10,7 +10,7 @@ use PhpAmqpLib\Wire\AMQPTable;
 class OrderService
 {
     const HOST = '101.132.105.173';
-    const PORT = '15672';
+    const PORT = '5672';
     const LOGIN = 'root';
     const PASSWORD = 'root';
     const VHOST = '/';
@@ -33,7 +33,7 @@ class OrderService
 
     public function __construct()
     {
-        $connection = new AMQPStreamConnection(self::HOST, self::PORT, self::LOGIN, self::PASSWORD);
+        $connection = new AMQPStreamConnection(self::HOST, self::PORT, self::LOGIN, self::PASSWORD, self::VHOST);
 
         $this->channel = $connection->channel();
 
