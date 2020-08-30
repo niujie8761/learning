@@ -92,16 +92,21 @@ class OrderService
     //出队列
     public function consume()
     {
-        $this->channel->basic_consume($this->queueName, '', false, false, false, false,
-        [$this, 'process_message']);
+        $callback = function($msg) {
+            echo '接收到消息：',$msg->delivery_info['routing_key'], ':', $msg->body, PHP_EOL;
+            sleep(1);
+        };
 
-        while(count($this->channel->callbacks)) {
+        $this->channel->basic_consume($this->queueName, '', false, false, false, false,
+        $callback);
+
+        while($this->channel->is_consuming()) {
             $this->channel->wait();
         }
     }
 
     //开始消费
-    public function process_message($message)
+    function process_message($message)
     {
         $obj = json_decode($message->body);
         try {
