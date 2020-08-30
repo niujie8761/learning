@@ -4,8 +4,6 @@ namespace Modules\Blog\Controllers\Admin;
 use App\Jobs\Async;
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redis;
 use Modules\Blog\Controllers\BaseController;
 
 /**
