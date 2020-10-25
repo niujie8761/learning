@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f5c8984f89c7230751cfe998216536b",
+    "content-hash": "514da387e25f2a7aea0fa00e8a29a581",
     "packages": [
         {
             "name": "caffeinated/modules",

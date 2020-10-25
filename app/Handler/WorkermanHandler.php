@@ -12,7 +12,7 @@ class WorkermanHandler
         //判断是否设置了UID
         if(!isset($connection->uid)){
             //给用户分配一个UID
-            $connection->uid = random_string(20);
+            $connection->uid = uniqid();
             //保存用户的uid
             $text_worker->uidConnections["{$connection->uid}"] = $connection;
             //向用户返回创建成功的信息
@@ -23,7 +23,7 @@ class WorkermanHandler
     public function handle_start(){
         global $text_worker;
         //每秒都判断客户端是否已下线
-        Timer::add(1, function()use($text_worker){
+        Timer::add(1, function() use($text_worker){
             $time_now = time();
             foreach($text_worker->connections as $connection) {
                 // 有可能该connection还没收到过消息，则lastMessageTime设置为当前时间
@@ -38,7 +38,7 @@ class WorkermanHandler
             }
         });
         //每隔30秒就向客户端发送一条心跳验证
-        Timer::add(50,function ()use ($text_worker){
+        Timer::add(30,function () use($text_worker){
             foreach ($text_worker->connections as $conn){
                 $conn->send('{"type":"ping"}');
             }
@@ -48,8 +48,6 @@ class WorkermanHandler
     //当客户端发送消息过来时,转发给所有人
     public function handle_message($connection,$data){
         global $text_worker;
-        //debug
-        //echo "data_info:".$data.PHP_EOL;
         $connection->lastMessageTime = time();
         $data_info=json_decode($data,true);
         if(!$data_info){
