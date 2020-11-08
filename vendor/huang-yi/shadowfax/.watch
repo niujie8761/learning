@@ -1,0 +1,6 @@
+- .*
++ie /app/.+\.php$
++ie /bootstrap/.+\.php$
++ie /config/.+\.php$
++ie /routes/.+\.php$
++ \.env$

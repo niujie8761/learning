@@ -1,0 +1,33 @@
+2020-10-25 15:44:21 pid:24015 Workerman[artisan] stopping ...
+2020-10-25 15:44:21 pid:24015 Workerman[artisan] has been stopped
+2020-10-25 15:44:24 pid:25825 Workerman[artisan] start in DEBUG mode
+2020-10-25 15:52:56 pid:25829 ErrorException: Undefined index: to_uid in /Users/niujie/Desktop/Work/learning/App/Handler/WorkermanHandler.php:78
+Stack trace:
+#0 /Users/niujie/Desktop/Work/learning/App/Handler/WorkermanHandler.php(78): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Undefined index...', '/Users/niujie/D...', 78, Array)
+#1 /Users/niujie/Desktop/Work/learning/vendor/workerman/workerman/Connection/TcpConnection.php(660): App\Handler\WorkermanHandler->handle_message(Object(Workerman\Connection\TcpConnection), '{"type":"login"...')
+#2 /Users/niujie/Desktop/Work/learning/vendor/workerman/workerman/Events/Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #737)
+#3 /Users/niujie/Desktop/Work/learning/vendor/workerman/workerman/Worker.php(2426): Workerman\Events\Select->loop()
+#4 /Users/niujie/Desktop/Work/learning/vendor/workerman/workerman/Worker.php(1551): Workerman\Worker->run()
+#5 /Users/niujie/Desktop/Work/learning/vendor/workerman/workerman/Worker.php(1381): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#6 /Users/niujie/Desktop/Work/learning/vendor/workerman/workerman/Worker.php(1355): Workerman\Worker::forkWorkersForLinux()
+#7 /Users/niujie/Desktop/Work/learning/vendor/workerman/workerman/Worker.php(542): Workerman\Worker::forkWorkers()
+#8 /Users/niujie/Desktop/Work/learning/app/Console/Commands/Workerman.php(59): Workerman\Worker::runAll()
+#9 [internal function]: App\Console\Commands\Workerman->handle()
+#10 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#11 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#12 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\Container\BoundMethod::callBoundMethod(Object(Illuminate\Foundation\Application), Array, Object(Closure))
+#13 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Container/Container.php(576): Illuminate\Container\BoundMethod::call(Object(Illuminate\Foundation\Application), Array, Array, NULL)
+#14 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Console/Command.php(183): Illuminate\Container\Container->call(Array)
+#15 /Users/niujie/Desktop/Work/learning/vendor/symfony/console/Command/Command.php(255): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#16 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Console/Command.php(170): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#17 /Users/niujie/Desktop/Work/learning/vendor/symfony/console/Application.php(1000): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /Users/niujie/Desktop/Work/learning/vendor/symfony/console/Application.php(271): Symfony\Component\Console\Application->doRunCommand(Object(App\Console\Commands\Workerman), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /Users/niujie/Desktop/Work/learning/vendor/symfony/console/Application.php(147): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Console/Application.php(90): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 /Users/niujie/Desktop/Work/learning/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(133): Illuminate\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#22 /Users/niujie/Desktop/Work/learning/artisan(37): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#23 {main}
+2020-10-25 15:52:56 pid:25829 Worker[25829] process terminated
+2020-10-25 15:52:56 pid:25825 worker[none:25829] exit with status 64000
+2020-10-25 16:26:28 pid:25825 Workerman[artisan] stopping ...
+2020-10-25 16:26:28 pid:25825 Workerman[artisan] has been stopped

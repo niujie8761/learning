@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+
+language: php
+
+php:
+  - '7.2'
+  - '7.3'
+  - '7.4'
+
+before_install:
+  - pecl channel-update pecl.php.net
+  - printf "\n" | pecl install swoole
+
+install:
+  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --no-suggest --prefer-dist
+
+before_script:
+  - phpenv config-rm xdebug.ini
+
+script:
+  - composer test
