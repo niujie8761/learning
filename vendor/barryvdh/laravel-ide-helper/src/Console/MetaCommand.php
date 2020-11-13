@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Laravel IDE Helper Generator
  *
@@ -43,25 +44,28 @@ class MetaCommand extends Command
     /** @var \Illuminate\Contracts\View\Factory */
     protected $view;
 
-    /** @var \Illuminate\Contracts\Config */
+    /** @var \Illuminate\Contracts\Config\Repository */
     protected $config;
 
     protected $methods = [
       'new \Illuminate\Contracts\Container\Container',
       '\Illuminate\Container\Container::makeWith(0)',
+      '\Illuminate\Contracts\Container\Container::get(0)',
       '\Illuminate\Contracts\Container\Container::make(0)',
       '\Illuminate\Contracts\Container\Container::makeWith(0)',
+      '\App::get(0)',
       '\App::make(0)',
       '\App::makeWith(0)',
       '\app(0)',
       '\resolve(0)',
+      '\Psr\Container\ContainerInterface::get',
     ];
 
     /**
      *
      * @param \Illuminate\Contracts\Filesystem\Filesystem $files
      * @param \Illuminate\Contracts\View\Factory $view
-     * @param \Illuminate\Contracts\Config $config
+     * @param \Illuminate\Contracts\Config\Repository $config
      */
     public function __construct($files, $view, $config)
     {
@@ -98,7 +102,7 @@ class MetaCommand extends Command
                 }
             } catch (\Throwable $e) {
                 if ($this->output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
-                    $this->comment("Cannot make '$abstract': ".$e->getMessage());
+                    $this->comment("Cannot make '$abstract': " . $e->getMessage());
                 }
             }
         }
